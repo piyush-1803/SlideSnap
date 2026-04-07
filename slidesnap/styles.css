@@ -1,0 +1,95 @@
+/* ── SlideSnap Toggle Button ─────────────────────────────────────────── */
+
+#slidesnap-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-right: 8px;
+  cursor: pointer;
+  height: 40px;
+}
+
+/* Label text */
+#slidesnap-toggle .slidesnap-label {
+  color: #fff;
+  font-size: 12px;
+  font-family: Roboto, Arial, sans-serif;
+  user-select: none;
+  opacity: 0.9;
+}
+
+/* Hide the real checkbox */
+#slidesnap-toggle #slidesnap-checkbox {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+/* Pill toggle track */
+#slidesnap-toggle .slidesnap-switch {
+  display: inline-block;
+  width: 32px;
+  height: 18px;
+  background: #555;
+  border-radius: 18px;
+  position: relative;
+  transition: background 0.2s ease;
+  flex-shrink: 0;
+}
+
+/* Sliding circle */
+#slidesnap-toggle .slidesnap-switch::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  transition: transform 0.2s ease;
+}
+
+/* Checked state — YouTube red */
+#slidesnap-toggle #slidesnap-checkbox:checked + .slidesnap-switch {
+  background: #ff0000;
+}
+
+#slidesnap-toggle #slidesnap-checkbox:checked + .slidesnap-switch::before {
+  transform: translateX(14px);
+}
+
+/* ── Progress Overlay ────────────────────────────────────────────────── */
+
+#slidesnap-overlay {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 99999;
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  padding: 14px 20px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-family: Roboto, Arial, sans-serif;
+  display: none;
+  min-width: 220px;
+}
+
+/* Progress bar track */
+#slidesnap-overlay .slidesnap-progress-bar-track {
+  width: 100%;
+  height: 6px;
+  background: #333;
+  border-radius: 3px;
+}
+
+/* Progress bar fill */
+#slidesnap-overlay .slidesnap-progress-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: #ff0000;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}

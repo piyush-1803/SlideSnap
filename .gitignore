@@ -1,0 +1,19 @@
+# Chrome Extension artifacts
+*.crx
+*.pem
+
+# Gemini / AI Assistant artifacts
+.gemini/
+brain/
+implementation_plan.md
+task.md
+walkthrough.md
+
+# Logs and OS files
+*.log
+.DS_Store
+Thumbs.db
+
+# Dependencies (if any)
+node_modules/
+package-lock.json
