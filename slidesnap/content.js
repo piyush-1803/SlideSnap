@@ -82,6 +82,7 @@
     const canvas = document.createElement("canvas");
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
+    // ⚡ Bolt: No willReadFrequently here because we only write (drawImage) and read as data URL (toDataURL), we don't use getImageData
     const ctx = canvas.getContext("2d");
 
     // Store dimensions for person detection later
@@ -209,7 +210,8 @@
         const canvas = document.createElement("canvas");
         canvas.width = hashSize;
         canvas.height = hashSize;
-        const ctx = canvas.getContext("2d");
+        // ⚡ Bolt: Add willReadFrequently: true to optimize getImageData performance by forcing CPU memory instead of GPU memory
+        const ctx = canvas.getContext("2d", { willReadFrequently: true });
         ctx.drawImage(img, 0, 0, hashSize, hashSize);
 
         const pixels = ctx.getImageData(0, 0, hashSize, hashSize).data;
