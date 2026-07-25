@@ -23,7 +23,8 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 async function detectSlideFrames(frames, threshold) {
   const slideFrames = [];
   const canvas = new OffscreenCanvas(160, 90);
-  const ctx = canvas.getContext('2d');
+  // ⚡ Bolt: Add willReadFrequently: true to drastically improve getImageData performance
+  const ctx = canvas.getContext('2d', { willReadFrequently: true });
 
   for (let i = 0; i < frames.length; i++) {
     const frame = frames[i];
